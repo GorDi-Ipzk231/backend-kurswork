@@ -87,7 +87,7 @@
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                                document.getElementById('logout-form').submit();">
+                                                                                    document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 
@@ -122,5 +122,10 @@
         </main>
     </div>
 </body>
+
+<footer class="p-3"
+    style="position:fixed; bottom: 0; width: 100%; background-color: rgb(70, 53, 39); color: white; font-size: 20px; text-align: center; margin-top: 2rem;" >
+    <p>&copy; 2024 GorDi<span class="text-warning borderWord">Salon</span></p>
+</footer>
 
 </html>

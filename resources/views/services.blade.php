@@ -18,6 +18,29 @@
         height: 200px;
         object-fit: cover;
     }
+
+    .background {
+        background-color: rgb(70, 53, 39);
+    }
+
+    .p {
+        font-size: 20px;
+    }
+
+    .borderWord {
+        -webkit-text-stroke-width: 0.2px;
+        -webkit-text-stroke-color: black;
+    }
+
+    .footer {
+        /* position: fixed; */
+        /* bottom: 0; */
+        /* width: 100%; */
+        /* background-color: rgb(70, 53, 39) !important; */
+        color: white;
+        text-align: center;
+        padding: 1rem;
+    }
 </style>
 
 <body>
@@ -221,6 +244,8 @@
                 </button>
             </div>
         </div>
+
+        
     </div>
 
 
