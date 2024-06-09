@@ -11,9 +11,9 @@
 
     <a type="button" class=" m-1 btn btn-warning mb-3" style="width: 150px;" href="{{route('role.create') }}">Create</a>
 
-    <table class="table m-3 border">
+    <table class="table table-bordered m-3">
 
-        <thead>
+        <thead class="thead-dark">
             <th>Name</th>
             <th style="{{ auth()->user()->role->name == 'Customer' ? 'visibility:hidden' : 'visibility:visible' }}">Actions</th>
         </thead>
