@@ -31,13 +31,13 @@
                     <td>{{ $salon->contact_phone }}</td>
                     <td>{{ $salon->contact_email }}</td>
                     <td>{{ $salon->address }}</td>
-                    <td class="d-flex" style="{{ auth()->user()->role->name == 'Customer' ? 'visibility:hidden' : 'visibility:visible' }}">
-                        <a class="m-1 btn btn-info" href="{{ route('salon.edit', $salon->id) }}">Edit</a>
-                        <a class="m-1 btn btn-dark" href="{{ route('salon.show', $salon->id) }}">Show</a>
+                    <td  style="{{ auth()->user()->role->name == 'Customer' ? 'visibility:hidden' : 'visibility:visible' }}">
+                        <a style="width:5rem" class="m-1 btn btn-info" href="{{ route('salon.edit', $salon->id) }}">Edit</a>
+                        <a style="width:5rem" class="m-1 btn btn-dark" href="{{ route('salon.show', $salon->id) }}">Show</a>
                         <form action="{{ route('salon.destroy', $salon->id) }}" method="post">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="m-1 btn btn-danger">Delete</button>
+                            <button type="submit" style="width:5rem" class="m-1 btn btn-danger">Delete</button>
                         </form>
                     </td>
                 </tr>
