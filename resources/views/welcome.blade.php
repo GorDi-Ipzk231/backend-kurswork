@@ -51,7 +51,6 @@
                     @if (Route::has('login'))
                         <div class="navbar-nav">
                             @auth
-                                <!-- <a href="{{ url('/home') }}" class="nav-link active">Home</a> -->
                                 @if (auth()->user()->role->name != 'Customer')
                                     <a href="{{ url('/home') }}" class="nav-link active">Home</a>
                                 @endif
@@ -59,10 +58,14 @@
                                 <a href="{{ route('login') }}" class="nav-link">Login</a>
                                 @if (Route::has('register'))
                                     <a href="{{ route('register') }}" class="nav-link">Register</a>
+                                    <a href="{{ url('/services') }}" class="nav-link active">Services</a>
+                                    <a href="{{ url('/stylists') }}" class="nav-link active">Stylists</a>
                                 @endif
                             @endauth
-                            <a href="{{ url('/services') }}" class="nav-link active">Services</a>
-                            <a href="{{ url('/stylists') }}" class="nav-link active">Stylists</a>
+                            @if(auth()->user() && auth()->user()->role && (auth()->user()->role->name == 'Customer' || auth()->user()->role->name == null))
+                                <a href="{{ url('/services') }}" class="nav-link active">Services</a>
+                                <a href="{{ url('/stylists') }}" class="nav-link active">Stylists</a>
+                            @endif
                         </div>
                     @endif
                 </div>
@@ -73,15 +76,6 @@
         </div>
     </nav>
 
-    <!-- <header class="background text-white d-flex flex-column flex-md-row align-items-center">
-        <img src="https://img.freepik.com/fotos-premium/close-de-beleza-eterea-do-rosto-perfeitamente-elaborado-de-uma-mulher_818261-19767.jpg"
-            class="image " alt="1" />
-        <div class="container d-flex flex-column align-items-center">
-            <h1 class="h1">Welcome to GorDi<span class="text-warning borderWord">Salon</span></h1>
-            <p class="p">The best salon for your beauty!</p>
-            <a href="{{ route('login') }}" class="btn btn-warning px-5 py-2">Login</a>
-        </div>
-    </header> -->
 
     <header class="background text-white d-flex flex-column flex-md-row align-items-center">
         <img src="https://img.freepik.com/fotos-premium/close-de-beleza-eterea-do-rosto-perfeitamente-elaborado-de-uma-mulher_818261-19767.jpg"
@@ -156,11 +150,21 @@
                 <div class="col-lg-6">
                     <div class="block-xs">
                         <h2>Why Clients <br>Choose Us</h2>
-                        <p class="big text-gray-800">Cras ut vestibulum tortor. In in nisi sit amet metus varius
-                            pulvinar in vitae ipsum nec mi sollicitudin luctus aliquet a, accumsan.</p>
-                        <p>In ante sapien, dapibus luctus aliquet a, accumsan sit amet dolor. Mauris id facilisis dolor.
-                            Donec malesuada, est eu dignissim eleifend, est nulla dignissim nisl, a facilisis ipsum.</p>
-                        <a class="btn btn-warning" href="#">Book Now</a>
+                        <p class="big text-gray-800">At our salon, we offer expertise and professionalism with highly
+                            trained stylists, ensuring personalized and top-notch service. Our state-of-the-art
+                            facilities provide a tranquil environment for relaxation and pampering. We use high-quality,
+                            professional-grade products and continuously innovate to offer the latest trends and
+                            techniques. Our commitment to customer-centricity and community involvement sets us apart.
+                            Clients leave not just looking their best, but feeling rejuvenated and cared for.</p>
+                        <p>We prioritize your comfort and satisfaction by offering tailored experiences to meet your
+                            unique needs. Our skilled staff is attentive, friendly, and dedicated to creating a
+                            welcoming atmosphere. Additionally, we use eco-friendly practices and products to minimize
+                            our impact on the environment while providing exceptional salon services.</p>
+                        @if(auth()->user() && auth()->user()->role && (auth()->user()->role->name != 'Customer' || auth()->user()->role->name == null))
+                            <a class="btn btn-warning" href="#">Our Stylists</a>
+                        @else
+                            <a class="btn btn-warning" href="/stylists">Our Stylists</a>
+                        @endif
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -212,11 +216,22 @@
                 <div class="col-lg-6">
                     <div class="block-xs">
                         <h2>Our Services <br>Choose Us</h2>
-                        <p class="big text-gray-800">Cras ut vestibulum tortor. In in nisi sit amet metus varius
-                            pulvinar in vitae ipsum nec mi sollicitudin luctus aliquet a, accumsan.</p>
-                        <p>In ante sapien, dapibus luctus aliquet a, accumsan sit amet dolor. Mauris id facilisis dolor.
-                            Donec malesuada, est eu dignissim eleifend, est nulla dignissim nisl, a facilisis ipsum.</p>
-                        <a class="btn btn-warning" href="#">Book Now</a>
+                        <p class="big text-gray-800"> At our salon, we offer a comprehensive range of high-quality
+                            beauty and grooming services tailored to meet the unique needs of each client. From
+                            precision haircuts and stunning color treatments to revitalizing facials and soothing
+                            massages, our diverse offerings ensure that every aspect of your well-being is taken care
+                            of. Our highly trained professionals are skilled in the latest techniques and trends,
+                            allowing us to provide exceptional results that exceed your expectations.</p>
+                        <p>Additionally, we specialize in indulgent spa treatments that leave you feeling refreshed and
+                            rejuvenated. We use premium products and state-of-the-art equipment to enhance the quality
+                            of our services and ensure the best experience for our clients. By prioritizing customer
+                            satisfaction and personalized care, our salon continues to be the preferred choice for those
+                            seeking a luxurious and transformative experience.</p>
+                        @if(auth()->user() && auth()->user()->role && (auth()->user()->role->name != 'Customer' || auth()->user()->role->name == null))
+                            <a class="btn btn-warning" href="#">Our Services</a>
+                        @else
+                            <a class="btn btn-warning" href="/services">Our Services</a>
+                        @endif
                     </div>
                 </div>
             </div>
