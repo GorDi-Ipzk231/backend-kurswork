@@ -238,7 +238,7 @@
         </div>
     </section>
 
-    <footer class="p-3 background text-white text-center">
+    <footer class="p-3 background text-white text-center" style="font-size: 20px;">
         <p>&copy; 2024 GorDi<span class="text-warning borderWord">Salon</span></p>
     </footer>
 

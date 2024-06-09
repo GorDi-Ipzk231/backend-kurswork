@@ -11,7 +11,7 @@
     <a type="button" class=" m-1 btn btn-warning mb-3" style="width: 150px;"
         href="{{route('stylist.create') }}">Create</a>
 
-    <table class="table table-bordered m-3">
+    <table class="table table-bordered m-3" style="margin-bottom: 5rem !important;">
 
         <thead class="thead-dark">
             <th>First name</th>

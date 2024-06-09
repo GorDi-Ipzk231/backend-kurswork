@@ -9,7 +9,7 @@
 
 
 <body>
-    <div class="container">
+    <div class="container" style="margin-bottom: 2rem;">
         <h1 class="text-center my-4">
             Our Salon Stylists</h1>
 
@@ -285,7 +285,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>

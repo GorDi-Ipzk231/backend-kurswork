@@ -11,7 +11,8 @@
     <a type="button" class="m-1 btn btn-warning mb-3" style="width: 150px;"
         href="{{ route('salon.create') }}">Create</a>
 
-    <table class="table table-bordered">
+    <table class="table table-bordered" style="margin-bottom: 5rem !important;">
+        
         <thead class="thead-dark">
             <tr>
                 <th>Name</th>

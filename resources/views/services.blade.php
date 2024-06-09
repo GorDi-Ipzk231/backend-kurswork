@@ -18,33 +18,10 @@
         height: 200px;
         object-fit: cover;
     }
-
-    .background {
-        background-color: rgb(70, 53, 39);
-    }
-
-    .p {
-        font-size: 20px;
-    }
-
-    .borderWord {
-        -webkit-text-stroke-width: 0.2px;
-        -webkit-text-stroke-color: black;
-    }
-
-    .footer {
-        /* position: fixed; */
-        /* bottom: 0; */
-        /* width: 100%; */
-        /* background-color: rgb(70, 53, 39) !important; */
-        color: white;
-        text-align: center;
-        padding: 1rem;
-    }
 </style>
 
 <body>
-    <div class="container">
+    <div class="container" style="margin-bottom: 3rem;">
         <h1 class="text-center">Our Salon Services</h1>
         <div style="margin: 3rem 0;">
             <h2 class="service-title">Hair Services</h2>
@@ -145,8 +122,9 @@
             <div class="accordion" id="accordionExample">
                 <div class="accordion-item">
                     <h2 class="accordion-header">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <button class="accordion-button" style="background-color: #ffc107;" type="button"
+                            data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true"
+                            aria-controls="collapseOne">
                             <h4>Facials</h4>
                         </button>
                     </h2>
@@ -245,7 +223,7 @@
             </div>
         </div>
 
-        
+
     </div>
 
 

@@ -22,7 +22,8 @@
             text-decoration: underline;
             color: black;
         }
-        .borderWord{
+
+        .borderWord {
             -webkit-text-stroke-width: 0.2px;
             -webkit-text-stroke-color: black;
         }
@@ -33,15 +34,17 @@
     <div id="app">
         <main class="py-4">
             <div class="d-flex">
-                <div class="card" style="width: 18rem;">
+                <div class="card text-bg-dark" style="width: 18rem;">
                     <div class="card-header">Navigation</div>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">
-                            <a class="{{  strpos($currentPath, 'customer') !== false ? 'link' : '' }}"
+                            <a style="color: black"
+                                class="{{  strpos($currentPath, 'customer') !== false ? 'link link-underline-warning' : '' }}"
                                 href="{{ route('customer.index') }}">Customers</a>
                         </li>
                         <li class="list-group-item">
-                            <a class="{{  strpos($currentPath, 'service') !== false ? 'link' : '' }}"
+                            <a style="color: black"
+                                class="{{  strpos($currentPath, 'service') !== false ? 'link link-underline-warning' : '' }}"
                                 href="{{ route('service.index') }}">Services</a>
                         </li>
                     </ul>
