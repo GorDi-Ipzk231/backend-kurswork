@@ -51,8 +51,10 @@
                     @if (Route::has('login'))
                         <div class="navbar-nav">
                             @auth
-                                <a href="{{ url('/home') }}" class="nav-link active">Home</a>
-                                <!-- <a href="{{ url('/services') }}" class="nav-link active">Services</a> -->
+                                <!-- <a href="{{ url('/home') }}" class="nav-link active">Home</a> -->
+                                @if (auth()->user()->role->name != 'Customer')
+                                    <a href="{{ url('/home') }}" class="nav-link active">Home</a>
+                                @endif
                             @else
                                 <a href="{{ route('login') }}" class="nav-link">Login</a>
                                 @if (Route::has('register'))
@@ -71,13 +73,29 @@
         </div>
     </nav>
 
-    <header class="background text-white d-flex flex-column flex-md-row align-items-center">
+    <!-- <header class="background text-white d-flex flex-column flex-md-row align-items-center">
         <img src="https://img.freepik.com/fotos-premium/close-de-beleza-eterea-do-rosto-perfeitamente-elaborado-de-uma-mulher_818261-19767.jpg"
             class="image " alt="1" />
         <div class="container d-flex flex-column align-items-center">
             <h1 class="h1">Welcome to GorDi<span class="text-warning borderWord">Salon</span></h1>
             <p class="p">The best salon for your beauty!</p>
             <a href="{{ route('login') }}" class="btn btn-warning px-5 py-2">Login</a>
+        </div>
+    </header> -->
+
+    <header class="background text-white d-flex flex-column flex-md-row align-items-center">
+        <img src="https://img.freepik.com/fotos-premium/close-de-beleza-eterea-do-rosto-perfeitamente-elaborado-de-uma-mulher_818261-19767.jpg"
+            class="image" alt="1" />
+        <div class="container d-flex flex-column align-items-center">
+            <h1 class="h1">Welcome to GorDi<span class="text-warning borderWord">Salon</span></h1>
+            <p class="p">The best salon for your beauty!</p>
+            @guest
+                <a href="{{ route('login') }}" class="btn btn-warning px-5 py-2">Login</a>
+            @else
+                @if(auth()->user()->role->name == 'Customer')
+                    <a href="{{ url('/services') }}" class="btn btn-warning px-5 py-2 mt-3">Read</a>
+                @endif
+            @endguest
         </div>
     </header>
 

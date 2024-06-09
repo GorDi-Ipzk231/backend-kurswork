@@ -20,7 +20,6 @@
     }
 </style>
 
-
 <body>
     <div class="container">
         <h1 class="text-center">Our Salon Services</h1>
