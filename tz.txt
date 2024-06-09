@@ -1,0 +1,118 @@
+план тз
+
+crm system
+
+управління перукарнями
+
+admin panel
+
+особистий кабінет
+    - клієнт
+    - майтсра
+    - адміністратор
+
+
+фільтр - по пошуку перукарні,
+        по ціні
+        по часі
+        та інші
+
+головна сторінка
+
+сторінка салону
+
+сторінка майтсра
+
+//////////////////********************////////////////
+
+
+
+для майтсра
+
+    налаштування
+     - власна сторінка
+     - свій прайс
+     - свій графік
+        та інше
+
+
+
+//////////////////********************////////////////
+
+адміністратор салону
+     - налаштовує:
+         - сторінка салону- список майстрів
+         - список майстрів
+         - відгуки клієнтів
+         - графіки та розклад
+         - прайси
+
+
+//////////////////********************////////////////
+
+admin
+    - налаштування платформи
+    - добавлення нового салону
+    - коригує взаємодію користувачів
+    - та інше
+
+
+структура бд
+
+
+Таблиця Customers (Клієнти):
+
+customer_id (PRIMARY KEY)
+first_name
+last_name
+email
+phone
+address
+created_at
+updated_at
+
+
+
+Таблиця Appointments (Призначення):
+
+appointment_id (PRIMARY KEY)
+customer_id (FOREIGN KEY з таблиці Customers)
+stylist_id (FOREIGN KEY з таблиці Stylists)
+appointment_date
+appointment_time
+created_at
+updated_at
+
+
+
+Таблиця Services (Послуги):
+
+service_id (PRIMARY KEY)
+service_name
+price
+created_at
+updated_at
+
+
+
+Таблиця Stylists (Стилісти):
+
+stylist_id (PRIMARY KEY)
+first_name
+last_name
+email
+phone
+created_at
+updated_at
+
+
+
+Таблиця Payments (Платежі):
+
+payment_id (PRIMARY KEY)
+customer_id (FOREIGN KEY з таблиці Customers)
+appointment_id (FOREIGN KEY з таблиці Appointments)
+amount
+payment_date
+created_at
+updated_at

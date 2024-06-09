@@ -1,0 +1,147 @@
+TABLE salones
+(
+    id INT PK AI,
+    name NVARCHAR(250),
+    description NVARCHAR(250),
+    contact_phone NVARCHAR,
+    contact_email NVARCHAR,
+    created_at TIMESTAMP,
+    updated_at TIMESTAMP
+)
+
+TABLE roles 
+(
+    id INT PK AI,
+    name NVARCHAR(100)
+    created_at TIMESTAMP,
+    updated_at TIMESTAMP
+)
+
+TABLE addresses 
+(
+    id INT PK AI,
+    salone_id FK -> salone(id)
+    region NVARCHAR,
+    district NVARCHAR,
+    city NVARCHAR,
+    street NVARCHAR,
+    created_at TIMESTAMP,
+    updated_at TIMESTAMP
+)
+
+TABLE stylists
+(
+    id INT PK AI,
+    first_name NVARCHAR,
+    last_name NVARCHAR,
+    contact_phone NVARCHAR,
+    contact_email NVARCHAR,
+    created_at TIMESTAMP,
+    updated_at TIMESTAMP
+)
+
+TABLE managers
+(
+    id INT PK AI,
+    first_name NVARCHAR,
+    last_name NVARCHAR,
+    contact_phone NVARCHAR,
+    contact_email NVARCHAR,
+    created_at TIMESTAMP,
+    updated_at TIMESTAMP
+)
+
+TABLE services
+(
+    id INT PK AI,
+    name NVARCHAR,
+    description NVARCHAR,
+    created_at TIMESTAMP,
+    updated_at TIMESTAMP
+)
+
+TABLE prices
+(
+    id INT PK AI,
+    current_id FK -> currencies(id)
+    value DECIMAL,
+    created_at TIMESTAMP,
+    updated_at TIMESTAMP
+)
+
+TABLE currencies
+(
+    id INT PK AI,
+    name NVARCHAR,
+    code NVARCHAR,
+    value NUMBER,
+    created_at TIMESTAMP,
+    updated_at TIMESTAMP
+)
+
+TABLE payments
+(
+    id INT PK AI,
+    current_id FK -> currencies(id)
+    customer_id FK -> customers(id)
+    service_id FK -> services(id)
+    stylist_id FK -> stylists(id)
+    value NUMBER,
+    created_at TIMESTAMP,
+    updated_at TIMESTAMP
+)
+
+TABLE customers
+(
+    id INT PK AI,
+    first_name NVARCHAR,
+    last_name NVARCHAR,
+    contact_phone NVARCHAR,
+    contact_email NVARCHAR,
+    value NUMBER,
+    created_at TIMESTAMP,
+    updated_at TIMESTAMP
+)
+
+TABLE appointments
+(
+    id INT PK AI,
+    customer_id FK -> customers(id)
+    service_id FK -> services(id)
+    stylist_id FK -> stylists(id)
+    salone_id FK -> salones(id)
+    schedule_id FK -> schedules(id)
+    created_at TIMESTAMP,
+    updated_at TIMESTAMP
+)
+
+TABLE schedules
+(
+    id INT PK AI,
+    salone_id FK -> salones(id)
+    stylist_id FK -> stylists(id)
+    date DATE,
+    satrt_hour INT,
+    end_hour INT,
+    created_at TIMESTAMP,
+    updated_at TIMESTAMP
+)
+
+TABLE filter
+(
+    id INT PK AI,
+    filter_name NVARCHAR,
+    service_name NVARCHAR,
+    created_at TIMESTAMP,
+    updated_at TIMESTAMP
+)
+
+TABLE accounts
+(
+    id INT PK AI,
+    role_id FK -> roles(id)
+    user_id FK -> users(id)
+    created_at TIMESTAMP,
+    updated_at TIMESTAMP
+
+)
