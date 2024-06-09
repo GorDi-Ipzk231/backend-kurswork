@@ -4,26 +4,6 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
     integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
-<style>
-    .table td,
-    .table th {
-        vertical-align: middle;
-    }
-
-    .d-flex {
-        display: flex !important;
-    }
-
-    .justify-content-center {
-        justify-content: center !important;
-    }
-
-    .align-items-center {
-        align-items: center !important;
-    }
-</style>
-
-
 <div class="container d-flex flex-column justify-content-center align-items-center mt-5">
 
     <h1>Services!</h1>
