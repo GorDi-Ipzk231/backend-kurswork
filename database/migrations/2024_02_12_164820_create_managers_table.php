@@ -12,11 +12,14 @@ return new class extends Migration {
     {
         Schema::create('managers', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
             $table->string('first_name');
             $table->string('last_name');
             $table->string('contact_phone');
             $table->string('contact_email');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

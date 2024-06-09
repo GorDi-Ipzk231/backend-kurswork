@@ -222,12 +222,14 @@
                 </button>
             </div>
         </div>
+    </div>
 
 
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-            integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5/yyb3R2nd1p0i5oGSk0lgltD2H8ch94D77/lc3X" crossorigin="anonymous">
-            </script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2LcL1p3W4NfAc4lFzXZtd2YY6kOO3pY7B1W1yZNhCz" crossorigin="anonymous">
-            </script>
-        @endsection
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5/yyb3R2nd1p0i5oGSk0lgltD2H8ch94D77/lc3X" crossorigin="anonymous">
+        </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2LcL1p3W4NfAc4lFzXZtd2YY6kOO3pY7B1W1yZNhCz" crossorigin="anonymous">
+        </script>
+    @endsection
+</body>

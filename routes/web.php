@@ -10,6 +10,7 @@ use App\Http\Controllers\SalonController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\StylistController;
+use App\Http\Controllers\StylistsController;
 use App\Http\Middleware\CheckRole;
 use Illuminate\Support\Facades\Route;
 
@@ -32,6 +33,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/services', [ServicesController::class, 'index'])->name('services');
+Route::get('/stylists', [StylistsController::class, 'index'])->name('stylists');
 
 Route::get('/admin', [AdminController::class, 'index'])->middleware('CheckRole:admin');
 

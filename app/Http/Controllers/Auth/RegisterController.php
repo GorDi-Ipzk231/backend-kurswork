@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Manager;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -44,7 +45,7 @@ class RegisterController extends Controller
     public function showRegistrationForm()
     {
         $roles = Role::all();
-        return view('auth.register', ['roles'=>$roles]);
+        return view('auth.register', ['roles' => $roles]);
     }
 
     /**
@@ -53,6 +54,16 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
+    // protected function validator(array $data)
+    // {
+    //     return Validator::make($data, [
+    //         'role_id' => ['required', 'numeric', 'min:1'],
+    //         'name' => ['required', 'string', 'max:255'],
+    //         'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+    //         'password' => ['required', 'string', 'min:8', 'confirmed'],
+    //     ]);
+    // }
+
     protected function validator(array $data)
     {
         return Validator::make($data, [
@@ -60,6 +71,10 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'first_name' => ['required_if:role_id,1', 'string', 'max:255'],
+            'last_name' => ['required_if:role_id,1', 'string', 'max:255'],
+            'contact_phone' => ['required_if:role_id,1', 'string', 'max:20'],
+            'contact_email' => ['required_if:role_id,1', 'string', 'email', 'max:255'],
         ]);
     }
 
@@ -69,13 +84,35 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\Models\User
      */
+    // protected function create(array $data)
+    // {
+    //     return User::create([
+    //         'role_id' => $data['role_id'],
+    //         'name' => $data['name'],
+    //         'email' => $data['email'],
+    //         'password' => Hash::make($data['password']),
+    //     ]);
+    // }
+
     protected function create(array $data)
     {
-        return User::create([
-            'role_id' => $data['role_id'],
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'role_id' => $data['role_id'],
         ]);
+
+        if ($data['role_id'] == 1) { // Assuming role_id 1 corresponds to manager
+            Manager::create([
+                'user_id' => $user->id,
+                'first_name' => $data['first_name'],
+                'last_name' => $data['last_name'],  
+                'contact_phone' => $data['contact_phone'],
+                'contact_email' => $data['contact_email'],
+            ]);
+        }
+
+        return $user;
     }
 }

@@ -60,6 +60,7 @@
                                 @endif
                             @endauth
                             <a href="{{ url('/services') }}" class="nav-link active">Services</a>
+                            <a href="{{ url('/stylists') }}" class="nav-link active">Stylists</a>
                         </div>
                     @endif
                 </div>
