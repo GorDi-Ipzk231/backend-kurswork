@@ -45,6 +45,14 @@
         <div class="alert alert-danger">{{$message}}</div>
         @enderror
         <br>
+        <label for="img_url" class="m-2">Image</label>
+        <!-- <textarea id="img_url" name="img_url"></textarea> -->
+        <input type="text" id="img_url" name="img_url" class="form-control">
+
+        @error('img_url')
+        <div class="alert alert-danger">{{$message}}</div>
+        @enderror
+        <br>
         <div class="d-flex justify-content-center align-items-center">
             <button type="submit" class="btn btn-warning m-2">Create</button>
             <a type="button" class="btn btn-info m-2" href="{{route('stylist.index') }}">Back</a>

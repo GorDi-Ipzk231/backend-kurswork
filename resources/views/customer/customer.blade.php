@@ -8,10 +8,11 @@
 
 
     <h1>Customers!</h1>
+    @if(auth()->user() && auth()->user()->role && (auth()->user()->role->name == 'Customer' || auth()->user()->role->name == null))
 
-    <a type="button" class=" m-1 btn btn-warning mb-3" style="width: 150px;"
-        href="{{route('customer.create') }}">Create</a>
-
+        <a type="button" class=" m-1 btn btn-warning mb-3" style="width: 150px;"
+            href="{{route('customer.create') }}">Create</a>
+    @endif
     <table class="table table-bordered m-3" style="margin-bottom: 5rem !important;">
 
         <thead class="thead-dark">
@@ -19,25 +20,29 @@
             <th>Last Name</th>
             <th>Contact Phone</th>
             <th>Contact Email</th>
-            <th>Actions</th>
+            @if(auth()->user() && auth()->user()->role && (auth()->user()->role->name == 'Customer' || auth()->user()->role->name == null))
+                <th>Actions</th>
+            @endif
         </thead>
 
         @foreach($customers as $customer)
-        <tr>
-            <td>{{$customer->first_name}}</td>
-            <td>{{$customer->last_name}}</td>
-            <td>{{$customer->contact_phone}}</td>
-            <td>{{$customer->contact_email}}</td>
-            <td class="d-flex">
-                <a type="button" class=" m-1 btn btn-info" href="{{route('customer.edit', $customer->id) }}">Edit</a>
-                <a type="button" class=" m-1 btn btn-dark" href="{{route('customer.show', $customer->id) }}">Show</a>
-                <form action="{{route('customer.destroy', $customer->id) }}" method="post">
-                    @csrf
-                    @method('DELETE')
-                    <input type="submit" class=" m-1 btn btn-danger" value="Delete">
-                </form>
-            </td>
-        </tr>
+            <tr>
+                <td>{{$customer->first_name}}</td>
+                <td>{{$customer->last_name}}</td>
+                <td>{{$customer->contact_phone}}</td>
+                <td>{{$customer->contact_email}}</td>
+                @if(auth()->user() && auth()->user()->role && (auth()->user()->role->name == 'Customer' || auth()->user()->role->name == null))
+                    <td class="d-flex">
+                        <a type="button" class=" m-1 btn btn-info" href="{{route('customer.edit', $customer->id) }}">Edit</a>
+                        <a type="button" class=" m-1 btn btn-dark" href="{{route('customer.show', $customer->id) }}">Show</a>
+                        <form action="{{route('customer.destroy', $customer->id) }}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <input type="submit" class=" m-1 btn btn-danger" value="Delete">
+                        </form>
+                    </td>
+                @endif
+            </tr>
         @endforeach
 
 

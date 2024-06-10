@@ -27,10 +27,31 @@ class CustomerController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+    // public function store(Request $request)
+    // {
+    //     //dd($request);
+
+    //     $request->validate([
+    //         'first_name' => 'required|max:255',
+    //         'last_name' => 'required|max:255',
+    //         'contact_phone' => 'required|max:255',
+    //         'contact_email' => 'required|max:255',
+    //     ]);
+
+    //     $post = new Customer();
+    //     $post::create([
+    //         'first_name' => $request->first_name,
+    //         'last_name' => $request->last_name,
+    //         'contact_phone' => $request->contact_phone,
+    //         'contact_email' => $request->contact_email,
+    //     ]);
+
+    //     return redirect()->route('customer.index');
+
+    // }
+
     public function store(Request $request)
     {
-        //dd($request);
-
         $request->validate([
             'first_name' => 'required|max:255',
             'last_name' => 'required|max:255',
@@ -39,15 +60,15 @@ class CustomerController extends Controller
         ]);
 
         $post = new Customer();
-        $post::create([
-            'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
-            'contact_phone' => $request->contact_phone,
-            'contact_email' => $request->contact_email,
-        ]);
+        $post->first_name = $request->first_name;
+        $post->last_name = $request->last_name;
+        $post->contact_phone = $request->contact_phone;
+        $post->contact_email = $request->contact_email;
+        $post->save();
 
-        return redirect()->route('customer.index');
+        return redirect()->back()->with('success', 'Registration successful!');
     }
+
 
     /**
      * Display the specified resource.

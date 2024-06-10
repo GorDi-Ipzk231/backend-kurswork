@@ -34,6 +34,9 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/services', [ServicesController::class, 'index'])->name('services');
 Route::get('/stylists', [StylistsController::class, 'index'])->name('stylists');
+Route::post('/customers', [CustomerController::class, 'store'])->name('customers.store');
+
+
 
 Route::get('/admin', [AdminController::class, 'index'])->middleware('CheckRole:admin');
 

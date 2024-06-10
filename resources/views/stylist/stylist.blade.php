@@ -18,6 +18,7 @@
             <th>Last name</th>
             <th>Contact Phone</th>
             <th>Contact Email</th>
+            <th>Image</th>
             <th style="{{ auth()->user()->role->name == 'Customer' ? 'visibility:hidden' : 'visibility:visible' }}">
                 Actions</th>
         </thead>
@@ -28,6 +29,9 @@
                 <td>{{$stylist->last_name}}</td>
                 <td>{{$stylist->contact_phone}}</td>
                 <td>{{$stylist->contact_email}}</td>
+                <td style="max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                    <a href="{{$stylist->img_url}}">{{$stylist->img_url}}</a>
+                </td>
                 <td class="d-flex"
                     style="{{ auth()->user()->role->name == 'Customer' ? 'visibility:hidden' : 'visibility:visible' }}">
                     <a type="button" class=" m-1 btn btn-info" href="{{route('stylist.edit', $stylist->id) }}">Edit</a>

@@ -71,6 +71,90 @@
                 </div>
             </div>
             <div class="navbar-nav order-md-last">
+                @if(!auth()->check() || (auth()->user()->role && auth()->user()->role->name == 'Customer'))
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                        data-bs-target="#registrationModal">
+                        Registration
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="registrationModal" tabindex="-1" aria-labelledby="registrationModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="registrationModalLabel" >Registration</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form id="registration-form" action="{{ route('customers.store') }}" method="POST"
+                                        class="needs-validation" novalidate>
+                                        @csrf
+                                        <div class="mb-3">
+                                            <label for="first_name" class="form-label">First Name</label>
+                                            <input type="text" class="form-control" id="first_name" name="first_name"
+                                                required>
+                                            <div class="invalid-feedback">
+                                                Please enter your first name.
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="last_name" class="form-label">Last Name</label>
+                                            <input type="text" class="form-control" id="last_name" name="last_name"
+                                                required>
+                                            <div class="invalid-feedback">
+                                                Please enter your last name.
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="contact_phone" class="form-label">Contact Phone</label>
+                                            <input type="text" class="form-control" id="contact_phone" name="contact_phone"
+                                                required>
+                                            <div class="invalid-feedback">
+                                                Please enter a valid phone number.
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="contact_email" class="form-label">Contact Email</label>
+                                            <input type="email" class="form-control" id="contact_email" name="contact_email"
+                                                required>
+                                            <div class="invalid-feedback">
+                                                Please enter a valid email address.
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="btn btn-warning">Register</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <script>
+                        // JavaScript для валідації форми
+                        (function () {
+                            'use strict'
+
+                            // Вибираємо всі форми, які потребують валідації
+                            var forms = document.querySelectorAll('.needs-validation')
+
+                            // Проходження по кожній формі та блокування стандартної відправки форми
+                            Array.from(forms).forEach(function (form) {
+                                form.addEventListener('submit', function (event) {
+                                    if (!form.checkValidity()) {
+                                        event.preventDefault()
+                                        event.stopPropagation()
+                                    }
+
+                                    form.classList.add('was-validated')
+                                }, false)
+                            })
+                        })()
+                    </script>
+
+                @endif
+
                 <a href="tel:1234567890" class="nav-link">+(380)-956-778-090</a>
             </div>
         </div>
@@ -243,6 +327,22 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        window.onload = function () {
+            var successMessage = document.getElementById('success-message');
+            if (successMessage) {
+                successMessage.style.display = 'none';
+            }
+        };
+
+        @if (session('success'))
+            document.getElementById('success-message').style.display = 'block';
+            setTimeout(function () {
+                document.getElementById('success-message').style.display = 'none';
+            }, 5000); // Час в мілісекундах, через який повідомлення буде автоматично приховано
+        @endif
+    </script>
+
 </body>
 
 </html>
