@@ -213,7 +213,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-6" style="width:45%">
                     <div class="block-xs">
                         <h2>Our Services <br>Choose Us</h2>
                         <p class="big text-gray-800"> At our salon, we offer a comprehensive range of high-quality
