@@ -13,4 +13,10 @@ class Service extends Model
         'name',
         'description',
     ];
+
+    public function customer()
+    {
+        return $this->belongsTo(Customer::class);
+    }
+
 }

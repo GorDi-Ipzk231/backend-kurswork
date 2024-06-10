@@ -107,7 +107,7 @@ class RegisterController extends Controller
             Manager::create([
                 'user_id' => $user->id,
                 'first_name' => $data['first_name'],
-                'last_name' => $data['last_name'],  
+                'last_name' => $data['last_name'],
                 'contact_phone' => $data['contact_phone'],
                 'contact_email' => $data['contact_email'],
             ]);
@@ -115,4 +115,5 @@ class RegisterController extends Controller
 
         return $user;
     }
+
 }

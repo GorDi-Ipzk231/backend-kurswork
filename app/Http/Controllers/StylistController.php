@@ -37,6 +37,7 @@ class STylistController extends Controller
             'contact_phone' => 'required|max:255',
             'contact_email' => 'required|max:255',
             'img_url' => 'required|max:500',
+            'decription' => 'required|max:500',
         ]);
 
         $post = new Stylist();
@@ -46,6 +47,7 @@ class STylistController extends Controller
             'contact_phone' => $request->contact_phone,
             'contact_email' => $request->contact_email,
             'img_url' => $request->img_url,
+            'description' => $request->description,
         ]);
 
         return redirect()->route('stylist.index');
@@ -79,6 +81,7 @@ class STylistController extends Controller
             'contact_phone' => 'required|max:255',
             'contact_email' => 'required|max:255',
             'img_url' => 'required|max:500',
+            'description' => 'required|max:500',
         ]);
 
         $stylist = Stylist::find($id); // Find the existing stylist by ID
@@ -87,6 +90,7 @@ class STylistController extends Controller
         $stylist->contact_phone = $request->contact_phone; // Update the contact_phone
         $stylist->contact_email = $request->contact_email; // Update the contact_email
         $stylist->img_url = $request->img_url; // Update the img_url
+        $stylist->description = $request->description; // Update the description
         $stylist->save(); // Save the changes
 
         return redirect()->route('stylist.index');

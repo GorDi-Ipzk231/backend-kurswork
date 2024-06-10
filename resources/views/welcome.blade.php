@@ -72,86 +72,102 @@
             </div>
             <div class="navbar-nav order-md-last">
                 @if(!auth()->check() || (auth()->user()->role && auth()->user()->role->name == 'Customer'))
-                    <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-warning" data-bs-toggle="modal"
-                        data-bs-target="#registrationModal">
-                        Registration
-                    </button>
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                                    data-bs-target="#registrationModal">
+                                    Registration
+                                </button>
 
-                    <!-- Modal -->
-                    <div class="modal fade" id="registrationModal" tabindex="-1" aria-labelledby="registrationModalLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="registrationModalLabel" >Registration</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
+                                <!-- Modal -->
+                                <div class="modal fade" id="registrationModal" tabindex="-1" aria-labelledby="registrationModalLabel"
+                                    aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="registrationModalLabel">Registration</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form id="registration-form" action="{{ route('customers.store') }}" method="POST"
+                                                    class="needs-validation" novalidate>
+                                                    @csrf
+                                                    <div class="mb-3">
+                                                        <label for="first_name" class="form-label">First Name</label>
+                                                        <input type="text" class="form-control" id="first_name" name="first_name"
+                                                            required>
+                                                        <div class="invalid-feedback">
+                                                            Please enter your first name.
+                                                        </div>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="last_name" class="form-label">Last Name</label>
+                                                        <input type="text" class="form-control" id="last_name" name="last_name"
+                                                            required>
+                                                        <div class="invalid-feedback">
+                                                            Please enter your last name.
+                                                        </div>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="contact_phone" class="form-label">Contact Phone</label>
+                                                        <input type="text" class="form-control" id="contact_phone" name="contact_phone"
+                                                            required>
+                                                        <div class="invalid-feedback">
+                                                            Please enter a valid phone number.
+                                                        </div>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="contact_email" class="form-label">Contact Email</label>
+                                                        <input type="email" class="form-control" id="contact_email" name="contact_email"
+                                                            required>
+                                                        <div class="invalid-feedback">
+                                                            Please enter a valid email address.
+                                                        </div>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="service_id" class="form-label">Service</label>
+                                                        <select class="form-select" id="service" name="service" required>
+                                                            <option value="">Choose a service</option>
+                                                            @php
+                                                                $services = \App\Models\Service::all();
+                                                            @endphp
+
+                                                            @foreach($services as $service)
+                                                                <option value="{{ $service->name }}">{{ $service->name }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                        <div class="invalid-feedback">
+                                                            Please choose a service.
+                                                        </div>
+                                                    </div>
+                                                    <button type="submit" class="btn btn-warning">Register</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="modal-body">
-                                    <form id="registration-form" action="{{ route('customers.store') }}" method="POST"
-                                        class="needs-validation" novalidate>
-                                        @csrf
-                                        <div class="mb-3">
-                                            <label for="first_name" class="form-label">First Name</label>
-                                            <input type="text" class="form-control" id="first_name" name="first_name"
-                                                required>
-                                            <div class="invalid-feedback">
-                                                Please enter your first name.
-                                            </div>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="last_name" class="form-label">Last Name</label>
-                                            <input type="text" class="form-control" id="last_name" name="last_name"
-                                                required>
-                                            <div class="invalid-feedback">
-                                                Please enter your last name.
-                                            </div>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="contact_phone" class="form-label">Contact Phone</label>
-                                            <input type="text" class="form-control" id="contact_phone" name="contact_phone"
-                                                required>
-                                            <div class="invalid-feedback">
-                                                Please enter a valid phone number.
-                                            </div>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="contact_email" class="form-label">Contact Email</label>
-                                            <input type="email" class="form-control" id="contact_email" name="contact_email"
-                                                required>
-                                            <div class="invalid-feedback">
-                                                Please enter a valid email address.
-                                            </div>
-                                        </div>
-                                        <button type="submit" class="btn btn-warning">Register</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
-                    <script>
-                        // JavaScript для валідації форми
-                        (function () {
-                            'use strict'
+                                <script>
+                                    // JavaScript для валідації форми
+                                    (function () {
+                                        'use strict'
 
-                            // Вибираємо всі форми, які потребують валідації
-                            var forms = document.querySelectorAll('.needs-validation')
+                                        // Вибираємо всі форми, які потребують валідації
+                                        var forms = document.querySelectorAll('.needs-validation')
 
-                            // Проходження по кожній формі та блокування стандартної відправки форми
-                            Array.from(forms).forEach(function (form) {
-                                form.addEventListener('submit', function (event) {
-                                    if (!form.checkValidity()) {
-                                        event.preventDefault()
-                                        event.stopPropagation()
-                                    }
+                                        // Проходження по кожній формі та блокування стандартної відправки форми
+                                        Array.from(forms).forEach(function (form) {
+                                            form.addEventListener('submit', function (event) {
+                                                if (!form.checkValidity()) {
+                                                    event.preventDefault()
+                                                    event.stopPropagation()
+                                                }
 
-                                    form.classList.add('was-validated')
-                                }, false)
-                            })
-                        })()
-                    </script>
+                                                form.classList.add('was-validated')
+                                            }, false)
+                                        })
+                                    })()
+                                </script>
 
                 @endif
 

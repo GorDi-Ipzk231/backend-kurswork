@@ -18,9 +18,10 @@
         <thead class="thead-dark">
             <th>First Name</th>
             <th>Last Name</th>
+            <th>Service</th>
             <th>Contact Phone</th>
             <th>Contact Email</th>
-            @if(auth()->user() && auth()->user()->role && (auth()->user()->role->name == 'Customer' || auth()->user()->role->name == null))
+            @if(auth()->user() && auth()->user()->role && (auth()->user()->role->name != 'Customer' || auth()->user()->role->name != null))
                 <th>Actions</th>
             @endif
         </thead>
@@ -29,9 +30,10 @@
             <tr>
                 <td>{{$customer->first_name}}</td>
                 <td>{{$customer->last_name}}</td>
+                <td>{{$customer->service}}</td>
                 <td>{{$customer->contact_phone}}</td>
                 <td>{{$customer->contact_email}}</td>
-                @if(auth()->user() && auth()->user()->role && (auth()->user()->role->name == 'Customer' || auth()->user()->role->name == null))
+                @if(auth()->user() && auth()->user()->role && (auth()->user()->role->name != 'Customer' || auth()->user()->role->name != null))
                     <td class="d-flex">
                         <a type="button" class=" m-1 btn btn-info" href="{{route('customer.edit', $customer->id) }}">Edit</a>
                         <a type="button" class=" m-1 btn btn-dark" href="{{route('customer.show', $customer->id) }}">Show</a>

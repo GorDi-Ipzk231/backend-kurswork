@@ -6,6 +6,7 @@
 <ul class="list-group m-2">
     <li class="list-group-item">{{$customer->first_name}}</li>
     <li class="list-group-item">{{$customer->last_name}}</li>
+    <li class="list-group-item">{{$customer->service}}</li>
     <li class="list-group-item">{{$customer->contact_phone}} </li>
     <li class="list-group-item">{{$customer->contact_email}}</li>
 </ul>

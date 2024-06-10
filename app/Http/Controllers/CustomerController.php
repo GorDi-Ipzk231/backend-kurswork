@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Customer;
+use App\Models\Service;
 use Illuminate\Http\Request;
 
 class CustomerController extends Controller
@@ -55,6 +56,7 @@ class CustomerController extends Controller
         $request->validate([
             'first_name' => 'required|max:255',
             'last_name' => 'required|max:255',
+            'service' => 'required|max:500',
             'contact_phone' => 'required|max:255',
             'contact_email' => 'required|max:255',
         ]);
@@ -62,6 +64,7 @@ class CustomerController extends Controller
         $post = new Customer();
         $post->first_name = $request->first_name;
         $post->last_name = $request->last_name;
+        $post->service = $request->service;
         $post->contact_phone = $request->contact_phone;
         $post->contact_email = $request->contact_email;
         $post->save();
@@ -85,7 +88,8 @@ class CustomerController extends Controller
     public function edit(string $id)
     {
         $customer = Customer::find($id);
-        return view('customer.edit', ['customer' => $customer]);
+        $services = Service::all(); // Отримати всі доступні послуги
+        return view('customer.edit', compact('customer', 'services'));
     }
     /**
      * Update the specified resource in storage.
@@ -95,6 +99,7 @@ class CustomerController extends Controller
         $request->validate([
             'first_name' => 'required|max:255',
             'last_name' => 'required|max:255',
+            'service' => 'required|max:500',
             'contact_phone' => 'required|max:255',
             'contact_email' => 'required|max:255',
         ]);
@@ -102,6 +107,7 @@ class CustomerController extends Controller
         $customer = Customer::find($id); // Find the existing customer by ID
         $customer->first_name = $request->first_name; // Update the first_name
         $customer->last_name = $request->last_name; // Update the last_name
+        $customer->service = $request->service; // Update the service
         $customer->contact_phone = $request->contact_phone; // Update the contact_phone
         $customer->contact_email = $request->contact_email; // Update the contact_email
         $customer->save(); // Save the changes

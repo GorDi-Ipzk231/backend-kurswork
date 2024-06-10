@@ -53,6 +53,14 @@
         <div class="alert alert-danger">{{$message}}</div>
         @enderror
         <br>
+        <label for="description" class="m-2">Description</label>
+        <!-- <textarea id="description" name="description">{{$stylist->description}}</textarea> -->
+        <input type="text" id="description" name="description" class="form-control" value="{{$stylist->description}}">
+        
+        @error('description')
+        <div class="alert alert-danger">{{$message}}</div>
+        @enderror
+        <br>
         <div class="d-flex justify-content-center align-items-center">
             <button type="submit" class="btn btn-warning m-2">Edit</button>
             <a type="button" class="btn btn-info m-2" href="{{route('stylist.index') }}">Back</a>

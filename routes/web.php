@@ -2,16 +2,15 @@
 
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ManagerController;
-use App\Http\Controllers\PageController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SalonController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\StylistController;
 use App\Http\Controllers\StylistsController;
-use App\Http\Middleware\CheckRole;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,17 +39,6 @@ Route::post('/customers', [CustomerController::class, 'store'])->name('customers
 
 Route::get('/admin', [AdminController::class, 'index'])->middleware('CheckRole:admin');
 
-
-// /*
-//  * address
-//  */
-// Route::get('/address', [AddressController::class, 'index'])->name('address.index');
-// Route::get('/address/address', [AddressController::class, 'create'])->name('address.create');
-// Route::post('/address', [AddressController::class, 'store'])->name('address.store');
-// Route::get('/address/{id}', [AddressController::class, 'show'])->name('address.show');
-// Route::get('/address/{id}/edit', [AddressController::class, 'edit'])->name('address.edit');
-// Route::put('/address/{id}', [AddressController::class, 'update'])->name('address.update');
-// Route::delete('/address/{id}', [AddressController::class, 'destroy'])->name('address.destroy');
 
 /*
  * customer

@@ -15,5 +15,6 @@ class Stylist extends Model
         'contact_phone',
         'contact_email',
         'img_url',
+        'description',
     ];
 }

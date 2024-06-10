@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CustomerServiceRegistration;
 use App\Models\Service;
 use Illuminate\Http\Request;
 
@@ -10,10 +11,18 @@ class ServiceController extends Controller
     /**
      * Display a listing of the resource.
      */
+    // public function index()
+    // {
+    //     $services = Service::all();
+    //     return view('service.service', ['services' => $services]);
+    //     // return view('welcome', ['services' => $services]);
+    // }
+
     public function index()
     {
         $services = Service::all();
-        return view('service.service', ['services' => $services]);
+        return view('service.service', ['services' => $services])
+            ->with('services', $services);
     }
 
     /**

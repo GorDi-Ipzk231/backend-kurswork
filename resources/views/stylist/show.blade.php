@@ -9,6 +9,7 @@
     <li class="list-group-item">{{$stylist->contact_phone}} </li>
     <li class="list-group-item">{{$stylist->contact_email}}</li>
     <li class="list-group-item">{{$stylist->img_url}}</li>
+    <li class="list-group-item">{{$stylist->description}}</li>
 </ul>
 
 <a type="button" class="btn btn-info m-2" href="{{route('stylist.index') }}">Back</a>
