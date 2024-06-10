@@ -34,7 +34,7 @@
     <div id="app">
         <main class="py-4">
             <div class="d-flex">
-                <div class="card text-bg-dark style=" width: 18rem;">
+                <div class="card text-bg-dark" style=" width: 18rem;">
                     <div class="card-header">Navigation</div>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">

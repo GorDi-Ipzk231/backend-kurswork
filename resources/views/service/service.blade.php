@@ -18,7 +18,7 @@
                 <th>Name</th>
                 <th>Description</th>
                 <th
-                    style="{{ (auth()->user()->role->name == 'Customer' || auth()->user()->role->name == 'Stylist') ? 'display: none;' : '' }}">
+                    style="{{ (auth()->user()->role->name == 'Customer') ? 'display: none;' : '' }}">
                     Actions</th>
             </tr>
         </thead>
@@ -29,7 +29,7 @@
                     <td>{{$service->name}}</td>
                     <td>{{$service->description}}</td>
                     <td class="d-flex justify-content-center align-items-center"
-                        style="{{ (auth()->user()->role->name == 'Customer' || auth()->user()->role->name == 'Stylist') ? 'display: none;' : '' }}">
+                        style="{{ (auth()->user()->role->name == 'Customer') ? 'display: none;' : '' }}">
                         <a type="button" class="btn btn-info m-1" href="{{route('service.edit', $service->id) }}">Edit</a>
                         <a type="button" class="btn btn-dark m-1" href="{{route('service.show', $service->id) }}">Show</a>
                         <form action="{{route('service.destroy', $service->id) }}" method="post" class="m-1">

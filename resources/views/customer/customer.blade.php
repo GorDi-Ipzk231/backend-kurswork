@@ -8,7 +8,7 @@
 
 
     <h1>Customers!</h1>
-    @if(auth()->user() && auth()->user()->role && (auth()->user()->role->name == 'Customer' || auth()->user()->role->name == null))
+    @if(auth()->user() && auth()->user()->role && (auth()->user()->role->name != 'Customer' || auth()->user()->role->name != null))
 
         <a type="button" class=" m-1 btn btn-warning mb-3" style="width: 150px;"
             href="{{route('customer.create') }}">Create</a>
