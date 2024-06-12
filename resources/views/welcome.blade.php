@@ -75,7 +75,7 @@
                                 <!-- Button trigger modal -->
                                 <button type="button" class="btn btn-warning" data-bs-toggle="modal"
                                     data-bs-target="#registrationModal">
-                                    Registration
+                                    Sign Up
                                 </button>
 
                                 <!-- Modal -->
@@ -140,7 +140,7 @@
                                                             Please choose a service.
                                                         </div>
                                                     </div>
-                                                    <button type="submit" class="btn btn-warning">Register</button>
+                                                    <button type="submit" class="btn btn-warning">Sign up</button>
                                                 </form>
                                             </div>
                                         </div>
@@ -173,17 +173,17 @@
 
                 <a href="tel:1234567890" class="nav-link">+(380)-956-778-090</a>
                 @guest
-                    @if (Route::has('login'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                        </li>
-                    @endif
+                    <!-- @if (Route::has('login'))
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            </li>
+                        @endif
 
-                    @if (Route::has('register'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                        </li>
-                    @endif
+                        @if (Route::has('register'))
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            </li>
+                        @endif -->
                 @else
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
@@ -194,7 +194,7 @@
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
-                                                                                        document.getElementById('logout-form').submit();">
+                                                                                            document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
                             </a>
 
