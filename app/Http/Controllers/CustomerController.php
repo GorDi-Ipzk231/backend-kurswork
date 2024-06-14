@@ -124,4 +124,15 @@ class CustomerController extends Controller
         $customer->delete();
         return redirect()->route('customer.index');
     }
+
+    public function destroyAsync(string $id)
+    {
+        $customer = Customer::find($id);
+        if ($customer) {
+            $customer->delete();
+            return response()->json(['success' => 'Customer deleted successfully']);
+        } else {
+            return response()->json(['error' => 'Customer not found'], 404);
+        }
+    }
 }

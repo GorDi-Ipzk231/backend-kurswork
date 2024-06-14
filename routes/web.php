@@ -35,6 +35,8 @@ Route::get('/services', [ServicesController::class, 'index'])->name('services');
 Route::get('/stylists', [StylistsController::class, 'index'])->name('stylists');
 Route::post('/customers', [CustomerController::class, 'store'])->name('customers.store');
 
+Route::delete('/customers/{id}/destroy-async', [CustomerController::class, 'destroyAsync'])->name('customer.destroyAsync');
+
 
 
 Route::get('/admin', [AdminController::class, 'index'])->middleware('CheckRole:admin');
